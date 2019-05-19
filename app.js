@@ -2,7 +2,7 @@ const express = require('express')
 const fileUpload = require('express-fileupload')
 const app = express()
 
-const routes = require('./router')
+//const routes = require('./router')
 
 app.use(fileUpload());
 
@@ -11,9 +11,9 @@ const port = 3000
 
 app.use(express.static('public'))
 
-app.use(routes)
+//app.use(routes)
 
-app.post('/upload', function(req, res) {
+app.post('/upload', (req, res) => {
   if (Object.keys(req.files).length == 0) {
     return res.status(400).send('No files were uploaded.');
   }
@@ -24,7 +24,7 @@ app.post('/upload', function(req, res) {
 
   // Wirting the file to the server using .mv()
   console.log(`Writing do disk ./uploads/${uploadFile.name}`)
-  uploadFile.mv(`./uploads/${uploadFile.name}`, function(err) {
+  uploadFile.mv(`./uploads/${uploadFile.name}`, (err) => {
     if (err)
       return res.status(500).send(err);
 
