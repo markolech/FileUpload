@@ -18,18 +18,21 @@ app.post('/upload', function(req, res) {
     return res.status(400).send('No files were uploaded.');
   }
 
-  let file = req.files.file;
-  console.log('file ', file.name)
+  // The name of the input field uploadFile is used to retrieve the uploaded file
+  let uploadFile = req.files.uploadFile;
+  console.log('uploadFile: ', uploadFile.name)
 
-  // Use the mv() method to place the file somewhere on your server
-  console.log(`Writing do disk ./uploads/${file.name}`)
-  file.mv(`./uploads/${file.name}`, function(err) {
+  // Wirting the file to the server using .mv()
+  console.log(`Writing do disk ./uploads/${uploadFile.name}`)
+  uploadFile.mv(`./uploads/${uploadFile.name}`, function(err) {
     if (err)
       return res.status(500).send(err);
 
-    res.send(`Successfully uploaded ${file.name}`);
+    res.send(`Successfully uploaded ${uploadFile.name}`);
   });
 });
+
+
 
 app.listen(port, () => {
   console.log(`Server is listening on http://${hostname}:${port}/`)
