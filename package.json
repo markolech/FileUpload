@@ -1,0 +1,16 @@
+{
+  "name": "fileupload",
+  "version": "1.0.0",
+  "description": "Simple file upload for Node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mark Olech",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.0",
+    "express-fileupload": "^1.1.4",
+    "nodemon": "^1.19.0"
+  }
+}
